@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎵 MP3 Playlist Player
 
-## Getting Started
+A simple and elegant Next.js web application for playing MP3 files with favorite management and auto-play features.
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. **📋 Display MP3 Playlist** - Automatically scans and displays all MP3 files from the `public/music` folder
+2. **❤ Favorite Toggle** - Toggle favorite/unfavorite status for each song with a heart icon
+3. **⭐ Favorites Filter** - View only your favorite songs with a dedicated favorites view
+4. **▶ Audio Player** - Built-in player with:
+   - Play/Pause controls
+   - Progress bar with timeline seeking
+   - Current time and duration display
+   - Previous/Next track buttons
+5. **🔄 Auto-Play Next** - Automatically plays the next song when current song finishes
+6. **💾 Persistent Storage** - Favorites are saved to a JSON file and persist across sessions
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 16+ with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Storage**: JSON file system
+- **Audio**: HTML5 Audio API
+
+## 📁 Project Structure
+
+```
+mp3_play_list/
+├── app/
+│   ├── api/
+│   │   ├── songs/route.ts
+│   │   └── favorites/route.ts
+│   ├── components/
+│   │   ├── AudioPlayer.tsx
+│   │   ├── SongItem.tsx
+│   │   └── Playlist.tsx
+│   └── page.tsx
+├── lib/
+│   ├── db.ts
+│   └── musicScanner.ts
+├── public/music/              # Add your MP3 files here
+└── data/favorites.json        # Auto-created
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Getting Started
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. Install Dependencies
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 2. Add MP3 Files
+Place your MP3 files in `public/music` folder
 
-## Learn More
+### 3. Run Development Server
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
 
-## Deploy on Vercel
+## 🎯 How to Use
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Add Songs**: Place MP3 files in `public/music` folder
+2. **Play**: Click on any song to play it
+3. **Control**: Use Play/Pause, Previous/Next buttons
+4. **Seek**: Drag the progress bar to change position
+5. **Favorite**: Click the heart icon to toggle favorite status
+6. **Filter**: View only favorite songs with the "❤ Yêu thích" tab
+7. **Auto-Play**: Next song plays automatically when current finishes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📦 API Endpoints
+
+- `GET /api/songs` - Get all songs
+- `GET /api/favorites` - Get favorite songs
+- `PUT /api/favorites/[fileName]` - Toggle favorite status
+
+## 💾 Data
+
+Favorites are stored in `data/favorites.json` and persist across sessions.
+
+## 🐛 Troubleshooting
+
+**Songs not showing?**
+- Check that MP3 files are in `public/music`
+- Reload the page
+
+**Favorites not saving?**
+- Ensure `data` folder exists and has write permissions
+
+---
+
+**Enjoy your music! 🎶**
