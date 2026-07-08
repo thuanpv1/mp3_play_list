@@ -47,7 +47,7 @@ export default function AudioPlayer({
     };
 
     const handleEnded = () => {
-      setIsPlaying(false);
+      setIsPlaying(true);
       onNext();
     };
 
