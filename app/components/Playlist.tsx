@@ -14,6 +14,16 @@ export default function Playlist() {
   const [viewMode, setViewMode] = useState<ViewMode>('all');
   const [isLoading, setIsLoading] = useState(true);
 
+  const loadFavorites = async () => {
+    try {
+      const response = await fetch('/api/favorites');
+      const data = await response.json();
+      setFavorites(data);
+    } catch (error) {
+      console.error('Error fetching favorites:', error);
+    }
+  };
+
   // Load all songs
   useEffect(() => {
     const fetchSongs = async () => {
@@ -32,19 +42,9 @@ export default function Playlist() {
       }
     };
 
-    fetchSongs();
+    void fetchSongs();
+    void loadFavorites();
   }, []);
-
-  // Load favorites
-  const loadFavorites = async () => {
-    try {
-      const response = await fetch('/api/favorites');
-      const data = await response.json();
-      setFavorites(data);
-    } catch (error) {
-      console.error('Error fetching favorites:', error);
-    }
-  };
 
   const handleToggleFavorite = async (song: Song) => {
     try {
